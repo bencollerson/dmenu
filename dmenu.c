@@ -365,6 +365,10 @@ keypress(XKeyEvent *ev)
 		case XK_u: /* delete left */
 			insert(NULL, 0 - cursor);
 			break;
+		case XK_v:
+			XConvertSelection(dpy, clip,
+			                  utf8, utf8, win, CurrentTime);
+			return;
 		case XK_w: /* delete word */
 			while (cursor > 0 && strchr(worddelimiters, text[nextrune(-1)]))
 				insert(NULL, nextrune(-1) - cursor);
@@ -407,6 +411,15 @@ keypress(XKeyEvent *ev)
 		case XK_j: ksym = XK_Next;  break;
 		case XK_k: ksym = XK_Prior; break;
 		case XK_l: ksym = XK_Down;  break;
+		default:
+			return;
+		}
+	} else if (ev->state & ShiftMask) {
+		switch(ksym) {
+		case XK_Insert:
+			XConvertSelection(dpy, XA_PRIMARY,
+			                  utf8, utf8, win, CurrentTime);
+			return;
 		default:
 			return;
 		}
