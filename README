@@ -1,3 +1,14 @@
+Suckless dmenu with a few patches
+
+* prefix completion
+* mouse support
+* paste clipboard and primary with keyboard
+* use system monospace font
+
+upstream: https://git.suckless.org/dmenu
+
+
+
 dmenu - dynamic menu
 ====================
 dmenu is an efficient dynamic menu for X.
