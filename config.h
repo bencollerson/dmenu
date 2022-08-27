@@ -7,11 +7,16 @@ static const char *fonts[] = {
 	"mono:pixelsize=14"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+
+static const char col_dark[]   = "#222";
+static const char col_blue[]   = "#234";
+static const char col_light[]  = "#bbb";
+
 static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#eeeeee", "#005577" },
-	[SchemeOut] = { "#000000", "#00ffff" },
+	/*               fg         bg       */
+	[SchemeNorm] = { col_light, col_dark },
+	[SchemeSel]  = { col_light, col_blue },
+	[SchemeOut]  = { col_dark,  col_light },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
